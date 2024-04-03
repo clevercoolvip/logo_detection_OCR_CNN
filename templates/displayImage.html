@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 20px;
+        }
+
+        h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        }
+
+        .container {
+            min-height: 100vh; /* Set container to at least viewport height */
+            background: linear-gradient(to bottom, #333, #222); /* Subtle gradient */
+            color: #fff; /* Text color with good contrast */
+            padding: 20px;
+        }
+
+        .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 10px;
+        }
+
+        img {
+        width: 100%; /* Responsive sizing */
+        height: auto;
+        object-fit: cover; /* Maintain aspect ratio with cropping */
+        border-radius: 5px; /* Rounded corners */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+        }
+
+        img:hover {
+        transform: scale(1.05); /* Slight zoom on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Templates</h1>
+
+    <div>
+       <h3> Choose templates to proceed</h3>
+    </div>
+ 
+    <div class="image-grid">
+        {% for image in images %}
+        <a href="/logo/{{image.split('.')[0]}}"><img src="{{url_for('static', filename='/formatTemplates/' + image)}}"></a>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
